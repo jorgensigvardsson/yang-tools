@@ -14,6 +14,7 @@ import {
 } from './yang-ast-parser';
 import { Builder, Context, OptionalValueBuilder } from './yang-ast-builders';
 import { PatternModifier, Status } from './yang-ast';
+import { DeepPartial } from "./utils";
 
 function yangParse(text: string): YangStatement {
 	return yangStmtParser("<text buffer>", text);
@@ -28,10 +29,6 @@ function createStatement(prf: string, kw: string, arg: string | boolean): YangSt
 		metadata: { position: { column: 1, line: 1, offset: 0 }, length: 0, source: "<memory buffer>" }
 	};
 }
-
-type DeepPartial<T> = {
-    [P in keyof T]?: DeepPartial<T[P]>;
-};
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function removeMetadata(obj: any): any {
