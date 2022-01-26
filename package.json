@@ -8,6 +8,7 @@
     "build": "tsc --build --pretty",
     "build:ci": "tsc --build",
     "test": "jest --coverage",
+	"test:ci": "jest --coverage --ci",
     "test:watch": "jest --watch"
   },
   "author": "Jörgen Sigvardsson <jorgen.sigvardsson@gmail.com>",
