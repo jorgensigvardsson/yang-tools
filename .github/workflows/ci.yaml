@@ -1,0 +1,12 @@
+name: CI build for every commit
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build docker image
+      run: docker build -t yang-tools:$GITHUB_SHA .
+    - name: Run docker image
+      run: docker run --rm yang-tools:$GITHUB_SHA

@@ -11,7 +11,6 @@ COPY jest* ./
 COPY tsconfig.json ./
 
 RUN cd src && \
-	npm run test:ci && \
 	npm run build:ci
 
-CMD sh
+CMD npm run test:ci
