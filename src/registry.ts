@@ -36,6 +36,19 @@ export class Registry {
 		this.moduleResolver = moduleResolver ?? new ModuleResolverImplementation(moduleFetcher, (moduleName, revision) => this.getModule(moduleName, revision));
 	}
 
+	get loadedModules(): Module[] {
+		const result: Module[] = [];
+
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		for (const [_, revisions] of this.modules) {
+			// eslint-disable-next-line @typescript-eslint/no-unused-vars
+			for (const [_, module] of revisions) {
+				result.push(module);
+			}
+		}
+		return result;
+	}
+
 	async load(moduleName: string, revision: string | null): Promise<LoadResult> {
 		const result = await this.moduleResolver.resolve(moduleName, revision);
 
