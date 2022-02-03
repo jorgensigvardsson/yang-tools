@@ -33,7 +33,7 @@ export class Registry {
 	private readonly modules = new Map<string, Map<string | null, Module>>();
 
 	constructor(moduleFetcher: ModuleFetcher, moduleResolver?: ModuleResolver) {
-		this.moduleResolver = moduleResolver ?? new ModuleResolverImplementation(moduleFetcher, this.getModule);
+		this.moduleResolver = moduleResolver ?? new ModuleResolverImplementation(moduleFetcher, (moduleName, revision) => this.getModule(moduleName, revision));
 	}
 
 	async load(moduleName: string, revision: string | null): Promise<LoadResult> {
