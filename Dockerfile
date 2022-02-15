@@ -2,15 +2,18 @@ FROM node:17-alpine
 
 WORKDIR /work
 
+RUN apk add jq pcre-tools
+
 COPY package* ./
-
-RUN npm install
-
 COPY ./src/ ./src/
 COPY jest* ./
 COPY tsconfig.json ./
+COPY ./build-scripts/ ./build-scripts/
 
-RUN cd src && \
-	npm run build:ci
+ENV NPM_REGISTRY_TOKEN=
+ENV VERSION=
 
-CMD npm run test:ci
+CMD npm install && \
+    npm run test:ci && \
+    npm run build:ci && \
+	./build-scripts/publish-on-semver-tag.sh

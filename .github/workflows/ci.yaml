@@ -9,4 +9,4 @@ jobs:
     - name: Build docker image
       run: docker build -t yang-tools:$GITHUB_SHA .
     - name: Run docker image
-      run: docker run --rm yang-tools:$GITHUB_SHA
+      run: docker run --rm -e "VERSION=$GITHUB_REF_NAME" -e "NPM_REGISTRY_TOKEN=${{ secrets.GITHUB_TOKEN }}" yang-tools:$GITHUB_SHA
