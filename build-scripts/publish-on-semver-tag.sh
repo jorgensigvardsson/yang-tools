@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "secret"
+
 if [ "$NPM_REGISTRY_TOKEN" == "" ]; then
 	echo No NPM Registry token specified, stopping...
 	exit 0
@@ -18,5 +20,5 @@ echo Setting package version to $VERSION
 jq -r --arg semver "$VERSION" '.version = $semver' package.json | tee package.json.tmp && \
 mv package.json.tmp package.json
 
-npm config set -- 'npm.pkg.github.com/:_authToken' "${NPM_REGISTRY_TOKEN}"
+npm config set -- '//npm.pkg.github.com/:_authToken' "${NPM_REGISTRY_TOKEN}"
 npm publish --scope @westermo
