@@ -11,6 +11,10 @@
 	"test:ci": "jest --coverage --ci",
     "test:watch": "jest --watch"
   },
+  "files":[
+	  "dist/**",
+	  "src/**"
+  ],
   "author": "Jörgen Sigvardsson <jorgen.sigvardsson@gmail.com>",
   "license": "MIT",
   "devDependencies": {
