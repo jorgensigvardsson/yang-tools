@@ -1,6 +1,6 @@
 {
   "name": "@westermo/yang-tools",
-  "version": "1.0.0-alpha1",
+  "version": "1.0.0-alpha3",
   "description": "Javascript library to parse and analyze yang files.",
   "main": "dist/api.js",
   "types": "dist/api.d.ts",
