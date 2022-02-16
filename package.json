@@ -1,12 +1,9 @@
 {
-  "name": "@westermo/yang-tools",
+  "name": "yang-tools",
   "version": "1.0.0-alpha3",
   "description": "Javascript library to parse and analyze yang files.",
   "main": "dist/api.js",
   "types": "dist/api.d.ts",
-  "publishConfig": {
-    "@westermo:registry": "https://npm.pkg.github.com"
-  },
   "files":[
 	  "dist/**",
 	  "src/**"
